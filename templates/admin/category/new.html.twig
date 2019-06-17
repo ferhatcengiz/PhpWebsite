@@ -1,0 +1,24 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Ekleme !{% endblock %}
+
+{% block content %}
+    <div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Kategori Ekleme</h4> </div>
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li class="active">Kategori Ekleme </li>
+            </ol>
+        </div>
+
+        <div class="white-box">
+
+            {{ include('admin/category/_form.html.twig') }}
+
+            <a href="{{ path('admin_category_index') }}">back to list</a>
+        </div>
+    </div>
+{% endblock %}

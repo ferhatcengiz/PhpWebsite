@@ -1,0 +1,45 @@
+{% extends 'frontbase.html.twig' %}
+
+     {% block title %} İletisim {{ data[0].title }} {% endblock %}
+     {% block keywords %} {{ data[0].keywords }} {% endblock%}
+     {% block description %} {{ data[0].description }} {% endblock %}
+     {% block content %}
+         <div class="well well-small">
+             <h1>İletişim Bilgileri</h1>
+             <hr class="soften"/>
+             <div class="row-fluid">
+                 <div class="span8 relative">
+                     {{ data[0].contact|raw }}
+
+                 </div>
+                 <div class="span4">
+                     <h4>Bize Ulaşın</h4>
+                     {{ include('messages.html.twig') }}
+                     <form class="form-horizontal" name="massages" action="" method="post">
+                         <fieldset>
+                             <div class="control-group">
+                                 <input type="text" name="massages[name]" placeholder="name" class="input-xlarge">
+                             </div>
+                             <div class="control-group">
+                                 <input type="email" name="massages[email]" placeholder="email" class="input-xlarge">
+                             </div>
+                             <div class="control-group">
+                                 <input type="text" name="massages[subject]" placeholder="subject" class="input-xlarge">
+                             </div>
+                             <br>
+                             <div class="control-group">
+                                 <textarea rows="4" name="massages[message]" id="textarea" class="input-xlarge"></textarea>
+                             </div>
+                             <br>
+                             <input type="hidden" name="token" value="{{ csrf_token('form-massage') }}"/>
+                             <input class="shopBtn" type="submit" value="MESAJI GÖNDER">
+
+
+                         </fieldset>
+                     </form>
+
+                 </div>
+             </div>
+         </div>
+
+     {% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'frontbase.html.twig' %}
+
+     {% block title %} Giriş Yapın {{ data[0].title }} {% endblock %}
+     {% block keywords %} {{ data[0].keywords }} {% endblock%}
+     {% block description %} {{ data[0].description }} {% endblock %}
+
+     {% block sidebar %}
+         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+             {{ include ('home/_usersidebar.html.twig') }}
+         {% endif %}
+     {% endblock %}
+
+{% block content %}
+    <form method="post">
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="w3ls_w3l_banner_nav_right_grid">
+            <div class="w3ls_w3l_banner_nav_right_grid_popular">
+                User Name: {{ app.user.name }}<hr>
+                Email: {{ app.user.email }}<hr>
+            </div>
+        </div>
+        {% else %}
+            <ul class="breadcrumb">
+                <li><a href="{{ path('home') }}">Home</a> <span class="divider">/</span></li>
+                <li class="active">Login</li>
+            </ul>
+            <h3> Login</h3>
+            <hr class="soft">
+            <div class="row">
+                <div class="span1"> &nbsp;</div>
+                <div class="span4">
+                    <div class="well">
+                        <h5>Giriş Yap</h5>
+                        <form>
+                            <div class="control-group">
+                                <label class="control-label" for="inputEmail1">Email</label>
+                                <div class="controls">
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="span3" placeholder="Email" required autofocus>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputPassword1">Password</label>
+                                <div class="controls">
+                                    <input type="password" name="password" id="inputPassword" class="span3" placeholder="Password" required>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}" >
+                                    <button type="submit" class="btn">Sign in</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </form>
+{% endblock %}

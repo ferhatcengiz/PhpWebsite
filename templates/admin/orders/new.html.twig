@@ -1,0 +1,18 @@
+{% extends 'frontbase.html.twig' %}
+
+     {% block title %} Sepetim {% endblock %}
+     {% block content %}
+         <!-- products-breadcrumb -->
+         <div class="products-breadcrumb">
+             <div class="container">
+                 <ul>
+                     <li><i class="fa fa-home" aria-hidden="true"></i><a href="index.html">Home</a><span>|</span></li>
+                     <li>Sepetim</li>
+                 </ul>
+             </div>
+         </div>
+         <!-- //products-breadcrumb -->
+         {{ include('orders/_form.html.twig') }}
+
+         <a href="{{ path('admin_orders_index') }}">back to list</a>
+     {% endblock %}

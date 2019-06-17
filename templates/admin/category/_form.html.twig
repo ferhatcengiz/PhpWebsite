@@ -1,0 +1,48 @@
+<form class="form-horizontal form-material" method="post">
+    <div class="form-group">
+        <label class="col-md-7">Üst Kategori</label>
+        <div class="col-md-7">
+            <select class="form-control form-control-line" name="category[parentid]">
+                {% if category.parentid!=0 %}
+                    <option value="{{ category.parentid }}">{{ category.title }}</option>
+                {% else %}
+                    <option value="0">Ana Kategori</option>
+                {% endif %}
+                <option value="0">Ana Kategori</option>
+                {% for cat in catlist %}
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="example-title" class="col-md-8">Title</label>
+            <div class="col-md-8">
+                <input type="text" name="category[title]" value="{{ category.title }}" placeholder="title" class="form-control form-control-line" > </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-12">Keywords</label>
+            <div class="col-md-12">
+                <input type="text" name="category[keywords]" value="{{ category.keywords }}" class="form-control form-control-line">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-12">Description</label>
+            <div class="col-md-12">
+                <input type="text" name="category[description]" value="{{ category.description }}" class="form-control form-control-line"> </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-12">Status</label>
+            <div class="col-sm-12">
+                <select class="form-control form-control-line" name="category[status]">
+                    <option>{{ category.status }}</option>
+                    <option>True</option>
+                    <option selected>False</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button class="btn btn-success">Onayla</button>
+            </div>
+        </div>
+</form>

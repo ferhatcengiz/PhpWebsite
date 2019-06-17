@@ -1,0 +1,24 @@
+<div class="span9">
+    <h4>Son Eklenen Ürünler </h4>
+    <ul class="thumbnails">
+        {% for rs in pro %}
+
+            <li>
+                <div class="thumbnail">
+                    <a href="{{ path('product_detail',{'id':rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" height="400" width="200"></a>
+                    <div class="caption">
+                        <h5>
+                            {{ rs.title }}
+                        </h5>
+                        <h5 style="color:#ff0000">{{ rs.sprice }}₺</h5>
+                    </div>
+                </div>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+</div>
+</div>
+</div>
+</div>

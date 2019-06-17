@@ -1,0 +1,53 @@
+{{ include ('messages.html.twig') }}
+<div class="well well-sm">
+<form class="form-horizontal" name="order" action="{{ path('orders_new') }}" method="post">
+    <fieldset >
+        <br>
+        <label class="col-sm-2 control-label">Ödenecek Tutar</label>
+        <div class="control-group">
+            <input align="left" type="text" name="orders[amount]" value="{{ total }}" placeholder="tutar" class="input-xlarge">
+        </div><br>
+        <h4>Kargo Alıcı Bilgileri</h4><br>
+        <label class="col-sm-2 control-label">Ad Soyad</label>
+        <div class="control-group">
+            <input align="left" type="text" name="orders[name]" value="{{ app.user.name }}" placeholder="İsim" class="input-xlarge">
+        </div><br>
+        <label class="col-sm-2 control-label">Adres </label>
+        <div class="control-group">
+            <input align="left" type="text" name="orders[address]" value="{{ app.user.address }}" placeholder="Adres" class="input-xlarge">
+        </div><br>
+        <label class="col-sm-2 control-label">Şehir</label>
+        <div class="control-group">
+            <input align="left" type="text" name="orders[city]" value="{{ app.user.city }}" placeholder="Şehir" class="input-xlarge">
+        </div><br>
+        <label class="col-sm-2 control-label">Telefon</label>
+        <div class="control-group">
+            <input type="text" name="orders[phone]" value="{{ app.user.phone }}" placeholder="Telefon" class="input-xlarge">
+        </div><br>
+        <h4>Kredi Kartı Bilgileri</h4><br>
+        <label class="col-sm-2 control-label">Ad Soyad</label>
+        <div class="control-group">
+            <input type="text" name="cardholdername"  placeholder="Kart Adı Soyadı" class="input-xlarge">
+        </div><br>
+        <label class="col-sm-2 control-label">Kart Numarası</label>
+        <div class="control-group">
+            <input type="text" name="cardholderno"  placeholder="Kart No" class="input-xlarge">
+        </div><br>
+        <label class="col-sm-2 control-label">Son Kullanma Tarihi</label>
+        <div class="control-group">
+            <input type="text" name="cardholderyear"  placeholder="Ay/Yıl" class="input-xlarge">
+        </div><br>
+        <label class="col-sm-2 control-label">Güvenlik Kodu</label>
+        <div class="control-group">
+            <input type="text" name="cardholdercode"  placeholder="Güvenlik Kodu" class="input-xlarge">
+        </div><br>
+        <br>
+        <input type="hidden" name="token" value={{ csrf_token('add-item') }}/>
+        <input class="btn btn-block btn-instagram" type="submit" value="Öde"><br>
+
+
+    </fieldset>
+</form>
+</div>
+</div>
+

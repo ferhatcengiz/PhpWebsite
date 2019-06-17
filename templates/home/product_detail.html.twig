@@ -1,0 +1,61 @@
+{% extends 'frontbase.html.twig' %}
+
+     {% block title %}  {{ data[0].title }} {% endblock %}
+     {% block keywords %} {{ data[0].keywords }} {% endblock%}
+     {% block description %} {{ data[0].description }} {% endblock %}
+     {% block sidebar %} {% include ('home/_sidebar.html.twig') %}{% endblock  %}
+     {% block content %}
+         <div class="row">
+             <div id="gallery" class="span3">
+                 <a href="{{ asset('uploads') }}/images/{{ data[0].image }}" title="{{ data[0].title }}">
+                     <img src="{{ asset('uploads') }}/images/{{ data[0].image }}" style="width:100%" alt="{{ data[0].title }}">
+                 </a>
+
+                 <div id="differentview" class="moreOptopm carousel slide">
+                     <div class="carousel-inner">
+                         <div class="item active">
+                             {% for rs in images %}
+                             <a href="{{ asset('uploads') }}/images/{{ rs.image }}"> <img style="width:25%" src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a>
+                             {% endfor %}
+
+                         </div>
+
+                     </div>
+
+                     <!--
+                     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                     <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                     -->
+                 </div>
+             </div>
+             <div class="span6">
+                 <h3>{{ data[0].title }}</h3>
+                 <small>{{ data[0].description }}</small>
+                 <hr class="soft">
+                 <form class="form-horizontal qtyFrm" action="{{ path('shopcart_new') }}" method="post">
+                     <div class="control-group">
+                         <label class="control-label"><span> {{ data[0].sprice }} ₺</span></label>
+                         <div class="controls">
+                             <input type="hidden" name="token" value="{{ csrf_token('add-item') }}" />
+                             <input type="number" name="shopcart[quantity]" class="span1" placeholder="Adet">
+                             <input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+                             <button type="submit" class="btn btn-large btn-primary pull-right"> Sepete Ekle <i class=" icon-shopping-cart"></i></button>
+                         </div>
+                     </div>
+                 </form>
+
+                 <hr class="soft">
+                 <h4>Stok: {{ data[0].amount }}</h4>
+                 <form class="form-horizontal qtyFrm pull-right">
+
+                 </form>
+                 <hr class="soft clr">
+                 {{ data[0].detail|raw }}
+
+                 <br class="clr">
+                 <a href="#" name="detail"></a>
+                 <hr class="soft">
+             </div>
+         </div>
+         </div>
+     {% endblock %}

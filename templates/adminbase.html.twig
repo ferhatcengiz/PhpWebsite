@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin') }}/plugins/images/favicon.png">
+    <title>{% block title %}Ample Admin Template - The Ultimate Multipurpose admin template{% endblock %}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('admin') }}/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="{{ asset('admin') }}/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="{{ asset('admin') }}/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="{{ asset('admin') }}/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <SCRIPT language="Javascript" type="text/javascript">
+        function openWin(windowURL, windowName, windowFeatures){    window.open(windowURL, windowName, windowFeatures); }
+    </SCRIPT>
+
+    <
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+
+</head>
+
+
+<body class="fix-header">
+<!-- ============================================================== -->
+<!-- Preloader -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+</div>
+<!-- ============================================================== -->
+<!-- Wrapper -->
+<!-- ============================================================== -->
+<div id="wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <div class="navbar-header">
+            <div class="top-left-part">
+                <!-- Logo -->
+                <a class="logo" href="index.html">
+                    <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon--><img src="{{ asset('admin') }}/plugins/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="{{ asset('admin') }}/plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />
+                    </b>
+                    <!-- Logo text image you can use text also --><span class="hidden-xs">
+                            <!--This is dark logo text--><img src="{{ asset('admin') }}/plugins/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="{{ asset('admin') }}/plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
+                         </span> </a>
+            </div>
+            <!-- /Logo -->
+
+        </div>
+        <!-- /.navbar-header -->
+        <!-- /.navbar-top-links -->
+        <!-- /.navbar-static-side -->
+    </nav>
+    <!-- End Top Navigation -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav slimscrollsidebar">
+
+            <ul class="nav" id="side-menu">
+                <li style="padding: 70px 0 0;class:treeview">
+                    <a href="{{ path('admin') }}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Anamenü</a>
+                </li>
+                <li>
+                    <a href="profile.html" class="waves-effect">
+                        <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                        <span>Siparişler</span>
+                        <span class="pull-right-container">
+                             <span class="label label-primary pıll-right">5</span>
+                            </span>
+
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ url('admin_orders_index',{'slug': 'new'}) }}"><i class="fa  fa-send fa-fw"></i>Yeni Siparişler</a></li>
+                        <li><a href="{{ url('admin_orders_index',{'slug': 'accepted'}) }}"><i class="fa fa-thumbs-up fa-fw"></i>Onaylanan Siparişler</a></li>
+                        <li><a href="{{ url('admin_orders_index',{'slug': 'inshipping'}) }}"><i class="fa fa-truck fa-fw"></i>Kargodakiler</a></li>
+                        <li><a href="{{ url('admin_orders_index',{'slug': 'canceled'}) }}"><i class="fa fa-times fa-fw"></i>İptal Edilenler</a></li>
+                        <li><a href="{{ url('admin_orders_index',{'slug': 'completed'}) }}"><i class="fa fa-star fa-fw"></i>Tamamlananlar</a></li>
+
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ path('admin_product_index') }}" class="waves-effect"><i class="fa fa fa-shopping-bag fa-fw" aria-hidden="true"></i>Ürünler</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_category_index') }}" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i>Kategoriler</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_user') }}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Üyeler</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_massages_index') }}" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Mesajlar</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_setting_index') }}" class="waves-effect"><i class="fa fa-gears fa-fw" aria-hidden="true"></i>Ayarlar</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar -->
+    <!-- ============================================================== -->
+    {% block content %}{% endblock %}
+    <!-- ============================================================== -->
+    <!-- Page Content -->
+    <!-- ============================================================== -->
+
+</div>
+<!-- ============================================================== -->
+</div><!-- End Page Content -->
+<!-- ============================================================== -->
+
+
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="{{ asset('admin') }}/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('admin') }}/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="{{ asset('admin') }}/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+<!--slimscroll JavaScript -->
+<script src="{{ asset('admin') }}/js/jquery.slimscroll.js"></script>
+<!--Wave Effects -->
+<script src="{{ asset('admin') }}/js/waves.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="{{ asset('admin') }}/js/custom.min.js"></script>
+{% block javascripts %}{% endblock %}
+</body>
+
+</html>

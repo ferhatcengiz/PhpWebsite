@@ -1,0 +1,37 @@
+{% extends 'frontbase.html.twig' %}
+
+
+     {% block title %} Sepetim {% endblock %}
+{% block sidebar %}{{ include ('home/_usersidebar.html.twig') }}{% endblock %}
+     {% block content %}
+
+         <table class="table table-bordered">
+             <thead>
+             <tr>
+                 <th>Ürün No</th>
+                 <th>Adet</th>
+                 <th>Ürün Adı</th>
+                 <th>Fiyatı</th>
+                 <th>ferhat</th>
+             </tr>
+             </thead>
+             <tbody>
+             {% for shopcart in shopcarts %}
+                 <tr class="rem1">
+                     <td class="invert">{{ shopcart.productid }}</td>
+                     <td class="invert ">{{ shopcart.quantity }}</td>
+                     <td class="invert">{{ shopcart.title }}</td>
+
+                     <td class="invert">{{ shopcart.sprice * shopcart.quantity }}</td>
+                     <td class="invert">
+                             <a href="{{ path('shopcart_del',{'id': shopcart.id}) }}"> <div class="close1">Sil</div></a>
+                     </td>
+                 </tr>
+
+             {% endfor %}
+             </tbody>
+             <a href="{{ path('orders_new') }}" class="btn btn-large pull-right">Satın Al! <i class="icon-arrow-right"></i></a>
+         </table>
+
+
+     {% endblock %}

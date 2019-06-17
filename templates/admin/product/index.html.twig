@@ -1,0 +1,91 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Product Listesi {% endblock %}
+
+{% block content %}
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title ">Products<a href="{{ path('admin_product_new') }}" class="btn btn-success active" style="margin-left:10px;">Product Ekleme</a></h4> </div>
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url('admin') }}">Anamenü</a></li>
+                        <li class="active"><a href="{{ path('admin_product_index') }}">Products</a></li>
+                    </ol>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            {{ include('admin/massages.html.twig') }}
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title">Product Listesi</h3>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Title</th>
+                                    <th>Amount</th>
+                                    <th>Price</th>
+                                    <th>Sprice</th>
+                                    <th>Minn</th>
+                                    <th>Image</th>
+                                    <th>Gallery</th>
+                                    <th>Category_id</th>
+                                    <th>User_id</th>
+                                    <th>Status</th>
+                                    <th>Göster</th>
+                                    <th>Düzenle</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for product in products %}
+                                    <tr>
+                                        <td>{{ product.id }}</td>
+                                        <td>{{ product.title }}</td>
+                                        <td>{{ product.amount }}</td>
+                                        <td>{{ product.bprice }}</td>
+                                        <td>{{ product.sprice }}</td>
+                                        <td>{{ product.minn }}</td>
+                                        <td>
+                                            <a href="javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=600,height=500');">
+                                                {% if product.image==null %}
+                                                    <img src="{{ url('admin') }}/img/add_icon.jpg" height="15">
+                                                {% else %}
+                                                    <img src="{{ asset('uploads') }}/images/{{ product.image }}" height="30">
+                                                {% endif %}
+                                            </a>
+
+                                        </td>
+                                        <td>
+                                            <a href="javascript:openWin('{{ path('admin_image_new', {'pid': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=1000,height=800');">
+                                                <img src="{{ url('admin') }}/img/gallery_icon.jpg" height="15">
+                                            </a>
+                                        </td>
+                                        <td>{{ product.categoryId }}</td>
+                                        <td></td>
+                                        <td>{{ product.status }}</td>
+                                        <td><a href="{{ path('admin_product_show', {'id': product.id}) }}" class="btn btn-block btn-linkedin btn-xs">Göster</a></td>
+                                        <td> <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-danger  btn-xs">Düzenle</a></td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="18">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer text-center">~~~~~~~~~~ </footer>
+    </div>
+{% endblock %}

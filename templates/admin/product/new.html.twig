@@ -1,0 +1,32 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Kategori Düzenle {% endblock %}
+{% block content %}
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Ürünler</h4> </div>
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url('admin') }}">Anamenü</a></li>
+                        <li class="active"><a href="{{ path('admin_product_index') }}">Ürünler</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title">Ürünleri Düzenle</h3>
+
+
+                        {{ include('admin/product/_form.html.twig') }}
+
+                        <a href="{{ path('admin_product_index') }}">back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-center">  </footer>
+    </div>
+{% endblock %}
